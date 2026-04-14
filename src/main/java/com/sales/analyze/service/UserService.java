@@ -25,7 +25,7 @@ public class UserService {
     public Map<String,Object>log(UserModel userModel){
         UserModel exists=userRepo.findByEmailAndPass(userModel.getEmail(),userModel.getPass());
         if(exists!=null){
-            return Map.of("status","succeess",
+            return Map.of("status","success",
                     "name",exists.getName(),
                     "email",exists.getEmail(),
                     "ph",exists.getPh());

@@ -12,7 +12,7 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
     public Map<String,Object> reg(UserModel userModel){
-        UserModel exist=userRepo.findbyEmail(userModel.getEmail());
+        UserModel exist=userRepo.findByEmail(userModel.getEmail());
         if(exist!=null){
             return Map.of("status","failed");
         }

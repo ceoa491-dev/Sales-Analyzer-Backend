@@ -18,4 +18,8 @@ public class UserController {
     public ResponseEntity<?>savereg(@RequestBody UserModel userModel){
     return ResponseEntity.ok(userService.reg(userModel));
 }
+@PostMapping("/log")
+    public ResponseEntity<?>log(@RequestBody UserModel userModel){
+    return ResponseEntity.ok(userService.log(userModel));
+}
 }

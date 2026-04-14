@@ -22,4 +22,16 @@ public class UserService {
             return Map.of("status","success");
         }
     }
+    public Map<String,Object>log(UserModel userModel){
+        UserModel exists=userRepo.findByEmailAndPass(userModel.getEmail(),userModel.getPass());
+        if(exists!=null){
+            return Map.of("status","succeess",
+                    "name",exists.getName(),
+                    "email",exists.getEmail(),
+                    "ph",exists.getPh());
+        }
+        else {
+            return Map.of("status","failed");
+        }
+    }
 }

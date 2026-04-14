@@ -5,12 +5,20 @@ import com.sales.analyze.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class UserService {
     @Autowired
     private UserRepo userRepo;
-    public String reg(UserModel userModel){
-        userRepo.save(userModel);
-        return "User Saved Successfull";
+    public Map<String,Object> reg(UserModel userModel){
+        UserModel exist=userRepo.findbyEmail(userModel.getEmail());
+        if(exist!=null){
+            return Map.of("status","success");
+        }
+        else {
+            userRepo.save(userModel);
+            return Map.of("status","failed");
+        }
     }
 }

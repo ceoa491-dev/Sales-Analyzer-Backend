@@ -14,11 +14,12 @@ public class UserService {
     public Map<String,Object> reg(UserModel userModel){
         UserModel exist=userRepo.findbyEmail(userModel.getEmail());
         if(exist!=null){
-            return Map.of("status","success");
+            return Map.of("status","failed");
         }
         else {
             userRepo.save(userModel);
-            return Map.of("status","failed");
+
+            return Map.of("status","success");
         }
     }
 }
